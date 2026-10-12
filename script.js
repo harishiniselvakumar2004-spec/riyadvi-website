@@ -1,9 +1,13 @@
 
 console.log("SCRIPT FILE LOADED");
+
+// Render backend URL
+const API_BASE_URL = "https://riyadvi-website-api.onrender.com";
+
+// Contact form
 const contactForm = document.getElementById("contactForm");
 const formMessage = document.getElementById("formMessage");
 
-// Contact form
 if (contactForm && formMessage) {
   contactForm.addEventListener("submit", async (event) => {
     event.preventDefault();
@@ -14,23 +18,29 @@ if (contactForm && formMessage) {
 
     const formData = new FormData(contactForm);
 
-    const contact = {
-      name: formData.get("name").trim(),
-      email: formData.get("email").trim(),
-      message: formData.get("message").trim()
-    };
+    const name = String(formData.get("name") || "").trim();
+    const email = String(formData.get("email") || "").trim();
+    const message = String(formData.get("message") || "").trim();
 
-    submitButton.disabled = true;
-    submitButton.textContent = "Sending...";
+    if (!name || !email || !message) {
+      formMessage.textContent = "Please fill in all fields.";
+      return;
+    }
+
+    if (submitButton) {
+      submitButton.disabled = true;
+      submitButton.textContent = "Sending...";
+    }
+
     formMessage.textContent = "";
 
     try {
-      const response = await fetch("/api/contact", {
+      const response = await fetch(`${API_BASE_URL}/api/contact`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
         },
-        body: JSON.stringify(contact)
+        body: JSON.stringify({ name, email, message })
       });
 
       const result = await response.json();
@@ -39,15 +49,20 @@ if (contactForm && formMessage) {
         throw new Error(result.message || "Unable to send enquiry.");
       }
 
-      formMessage.textContent = result.message;
+      formMessage.textContent =
+        result.message || "Your enquiry was sent successfully!";
+
       contactForm.reset();
     } catch (error) {
+      console.error("Contact form error:", error);
+
       formMessage.textContent =
         "Could not send your enquiry. Please try again.";
-      console.error("Contact form error:", error);
     } finally {
-      submitButton.disabled = false;
-      submitButton.textContent = "Send Enquiry";
+      if (submitButton) {
+        submitButton.disabled = false;
+        submitButton.textContent = "Send Enquiry";
+      }
     }
   });
 }
@@ -87,7 +102,7 @@ if (window.gsap) {
   }
 }
 
-/* Three.js 3D animation */
+// Three.js 3D animation
 const threeCanvas = document.getElementById("threeCanvas");
 
 if (threeCanvas && window.THREE) {
@@ -139,6 +154,7 @@ if (threeCanvas && window.THREE) {
 
   threeCanvas.addEventListener("pointermove", (event) => {
     const rect = threeCanvas.getBoundingClientRect();
+
     sphere.rotation.x =
       ((event.clientY - rect.top) / rect.height - 0.5) * 2;
 
@@ -146,17 +162,15 @@ if (threeCanvas && window.THREE) {
       ((event.clientX - rect.left) / rect.width - 0.5) * 2;
   });
 
-  
-function animate() {
-  requestAnimationFrame(animate);
-  
-  sphere.rotation.x += 0.03;
-  sphere.rotation.y += 0.04;
-  sphere.rotation.z += 0.02;
+  function animate() {
+    requestAnimationFrame(animate);
 
-  renderer.render(scene, camera);
-}
+    sphere.rotation.x += 0.003;
+    sphere.rotation.y += 0.004;
+    sphere.rotation.z += 0.002;
 
-animate();
+    renderer.render(scene, camera);
+  }
 
+  animate();
 }
