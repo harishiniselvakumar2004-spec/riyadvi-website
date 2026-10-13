@@ -1,4 +1,4 @@
-
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,13 +24,25 @@
     }
 
     * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; scroll-padding-top: 90px; }
-    body { margin: 0; font-family: 'Inter', sans-serif; }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 90px;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+    }
+
     a { color: inherit; }
+
     button, input, textarea, select { font: inherit; }
 
     .section { padding: 80px 8%; }
+
     .section h2 { margin: 0 0 20px; }
+
     .section-intro {
       max-width: 760px;
       margin: 0 0 30px;
@@ -94,7 +106,10 @@
       outline-offset: 2px;
     }
 
-    .form-field textarea { min-height: 110px; resize: vertical; }
+    .form-field textarea {
+      min-height: 110px;
+      resize: vertical;
+    }
 
     .gold-button {
       display: inline-block;
@@ -110,7 +125,12 @@
     }
 
     .gold-button:hover { transform: translateY(-2px); }
-    .gold-button:disabled { opacity: .6; cursor: wait; transform: none; }
+
+    .gold-button:disabled {
+      opacity: .6;
+      cursor: wait;
+      transform: none;
+    }
 
     .form-message {
       margin-top: 16px;
@@ -134,18 +154,106 @@
       font-size: .8rem;
     }
 
-    .site-footer { padding: 30px 8%; text-align: center; }
+    .site-footer {
+      padding: 30px 8%;
+      text-align: center;
+    }
+
+    /* AI TOOLS SECTION */
+    .ai-tools-section {
+      background:
+        radial-gradient(ellipse at top right, rgba(212,175,55,.09), transparent 48%),
+        #080808;
+    }
+
+    .ai-tools-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 20px;
+      margin-top: 32px;
+    }
+
+    .ai-tool-card {
+      min-width: 0;
+      padding: 26px 22px;
+      border: 1px solid rgba(212,175,55,.28);
+      border-radius: 16px;
+      background: rgba(255,255,255,.035);
+      transition: transform .3s ease, border-color .3s ease,
+                  background .3s ease;
+    }
+
+    .ai-tool-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--gold);
+      background: rgba(212,175,55,.06);
+    }
+
+    .ai-tool-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 52px;
+      height: 52px;
+      margin-bottom: 20px;
+      border: 1px solid rgba(212,175,55,.45);
+      border-radius: 14px;
+      color: var(--gold);
+      font-size: 27px;
+      background: rgba(212,175,55,.08);
+    }
+
+    .ai-tool-card h3 {
+      margin: 0 0 12px;
+      color: #fff;
+      font-size: 18px;
+    }
+
+    .ai-tool-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .ai-tools-note {
+      margin-top: 26px;
+      padding: 16px 18px;
+      border-left: 3px solid var(--gold);
+      background: rgba(255,255,255,.025);
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    @media (max-width: 950px) {
+      .ai-tools-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
 
     @media (max-width: 700px) {
       .section { padding: 55px 6%; }
+
       .health-form { padding: 18px; }
+
       .form-grid { grid-template-columns: 1fr; }
+
       .form-field.full-width { grid-column: auto; }
-      .nav-links { gap: 12px; flex-wrap: wrap; }
+
+      .nav-links {
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .ai-tools-grid { grid-template-columns: 1fr; }
     }
 
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
+
       *, *::before, *::after {
         animation-duration: .01ms !important;
         transition-duration: .01ms !important;
@@ -167,6 +275,7 @@
         <a href="#blog">Blog</a>
         <a href="#careers">Careers</a>
         <a href="#about">About</a>
+        <a href="#ai-tools">AI Tools</a>
         <a href="#health-checkup">Health Checkup</a>
         <a href="#project-planning">Project Planning</a>
         <a href="#contact">Contact</a>
@@ -207,22 +316,27 @@
           <h3>Web Development</h3>
           <p>Responsive, accessible and modern websites for businesses.</p>
         </article>
+
         <article class="content-card">
           <h3>App Development</h3>
           <p>User-focused mobile and web application experiences.</p>
         </article>
+
         <article class="content-card">
           <h3>UI/UX Design</h3>
           <p>Wireframes, prototypes and intuitive digital interfaces.</p>
         </article>
+
         <article class="content-card">
           <h3>Digital Marketing</h3>
           <p>SEO and digital strategies to improve online visibility.</p>
         </article>
+
         <article class="content-card">
           <h3>AR/VR Solutions</h3>
           <p>Immersive experiences for interactive digital products.</p>
         </article>
+
         <article class="content-card">
           <h3>3D Experiences</h3>
           <p>Interactive 3D visuals and animations for the web.</p>
@@ -245,11 +359,13 @@
           <p>A modern corporate website concept with responsive layouts.</p>
           <span>HTML • CSS • JavaScript</span>
         </article>
+
         <article class="content-card">
           <h3>UI/UX Dashboard</h3>
           <p>A dashboard concept focused on clear data presentation.</p>
           <span>UI/UX • Figma</span>
         </article>
+
         <article class="content-card">
           <h3>Interactive 3D Experience</h3>
           <p>A browser-based 3D visual concept with animation.</p>
@@ -267,15 +383,18 @@
     <section class="section" id="blog">
       <p class="section-kicker">Latest Thinking</p>
       <h2>Insights &amp; Ideas</h2>
+
       <div class="content-grid">
         <article class="content-card">
           <h3>Why UI/UX Matters</h3>
           <p>How thoughtful design can make digital products easier to use.</p>
         </article>
+
         <article class="content-card">
           <h3>Building Better Websites</h3>
           <p>Key ideas for creating responsive and user-friendly websites.</p>
         </article>
+
         <article class="content-card">
           <h3>AI in Digital Experiences</h3>
           <p>Ways AI tools can support creativity and digital workflows.</p>
@@ -311,15 +430,73 @@
           <h3>Our Mission</h3>
           <p>To create practical digital solutions that address real needs.</p>
         </article>
+
         <article class="content-card">
           <h3>Our Approach</h3>
           <p>Understand the problem, plan the experience, build and improve.</p>
         </article>
+
         <article class="content-card">
           <h3>Our Focus</h3>
           <p>Usability, quality, accessibility and technology innovation.</p>
         </article>
       </div>
+    </section>
+
+    <!-- AI TOOLS USED -->
+    <section class="section ai-tools-section" id="ai-tools">
+      <p class="section-kicker">Smart Workflow</p>
+      <h2>AI Tools <span style="color:var(--gold)">Used</span></h2>
+
+      <p class="section-intro">
+        AI-assisted tools can support research, idea generation, interface
+        exploration and development while keeping user needs at the centre
+        of the design process.
+      </p>
+
+      <div class="ai-tools-grid">
+        <article class="ai-tool-card">
+          <div class="ai-tool-icon" aria-hidden="true">✦</div>
+          <h3>ChatGPT</h3>
+          <p>
+            Assists with brainstorming, content drafts, requirement analysis
+            and problem-solving ideas.
+          </p>
+        </article>
+
+        <article class="ai-tool-card">
+          <div class="ai-tool-icon" aria-hidden="true">✧</div>
+          <h3>Google Stitch</h3>
+          <p>
+            Supports UI concept exploration and helps turn design ideas
+            into interface concepts.
+          </p>
+        </article>
+
+        <article class="ai-tool-card">
+          <div class="ai-tool-icon" aria-hidden="true">◈</div>
+          <h3>Figma</h3>
+          <p>
+            Used for interface design, wireframes, prototypes and
+            collaborative design workflows.
+          </p>
+        </article>
+
+        <article class="ai-tool-card">
+          <div class="ai-tool-icon" aria-hidden="true">&lt;/&gt;</div>
+          <h3>AI Coding Assistants</h3>
+          <p>
+            Can help explain code, suggest improvements and support
+            debugging during development.
+          </p>
+        </article>
+      </div>
+
+      <p class="ai-tools-note">
+        Responsible workflow: AI-generated ideas and suggestions should be
+        reviewed, tested and refined by people. Update this section to reflect
+        the tools actually used for this project.
+      </p>
     </section>
 
     <!-- BUSINESS HEALTH CHECKUP -->
@@ -373,6 +550,7 @@
         <button class="gold-button" id="healthSubmitButton" type="submit">
           Submit Health Checkup
         </button>
+
         <p id="healthFormMessage" class="form-message"
           role="status" aria-live="polite"></p>
       </form>
@@ -455,6 +633,7 @@
         <button class="gold-button" id="planningSubmitButton" type="submit">
           Submit Project Requirements
         </button>
+
         <p id="planningMessage" class="form-message"
           role="status" aria-live="polite"></p>
       </form>
@@ -496,6 +675,7 @@
         </div>
 
         <button class="gold-button" type="submit">Send Enquiry</button>
+
         <p id="formMessage" class="form-message"
           role="status" aria-live="polite"></p>
       </form>
@@ -523,14 +703,17 @@
     // Business Health Checkup submission
     const healthForm = document.getElementById("healthCheckupForm");
     const healthMessage = document.getElementById("healthFormMessage");
-    const healthSubmitButton = document.getElementById("healthSubmitButton");
+    const healthSubmitButton =
+      document.getElementById("healthSubmitButton");
 
     healthForm.addEventListener("submit", async function (event) {
       event.preventDefault();
+
       healthMessage.textContent = "Submitting your information...";
       healthSubmitButton.disabled = true;
 
       const formData = new FormData(healthForm);
+
       const payload = {
         name: String(formData.get("name") || "").trim(),
         email: String(formData.get("email") || "").trim(),
@@ -550,15 +733,18 @@
         });
 
         const result = await response.json();
+
         if (!response.ok || result.success === false) {
           throw new Error(result.message || "Unable to submit the form.");
         }
 
         healthMessage.textContent =
           result.message || "Health Checkup submitted successfully!";
+
         healthForm.reset();
       } catch (error) {
         console.error("Health Checkup submission error:", error);
+
         healthMessage.textContent =
           "Unable to submit right now. Please try again in a moment.";
       } finally {
@@ -567,7 +753,6 @@
     });
 
     // Project Planning submission
-    // This expects the backend POST /api/project-planning endpoint.
     const planningForm = document.getElementById("planningForm");
     const planningMessage = document.getElementById("planningMessage");
     const planningSubmitButton =
@@ -575,10 +760,14 @@
 
     planningForm.addEventListener("submit", async function (event) {
       event.preventDefault();
-      planningMessage.textContent = "Submitting your project requirements...";
+
+      planningMessage.textContent =
+        "Submitting your project requirements...";
+
       planningSubmitButton.disabled = true;
 
       const formData = new FormData(planningForm);
+
       const payload = {
         name: String(formData.get("name") || "").trim(),
         email: String(formData.get("email") || "").trim(),
@@ -606,11 +795,13 @@
 
         planningMessage.textContent =
           result.message || "Project requirements submitted successfully!";
+
         planningForm.reset();
       } catch (error) {
         console.error("Project Planning submission error:", error);
+
         planningMessage.textContent =
-          "The form is ready, but the backend connection needs to be completed. Please try again later.";
+          "Unable to submit right now. Please try again in a moment.";
       } finally {
         planningSubmitButton.disabled = false;
       }
@@ -618,3 +809,4 @@
   </script>
 </body>
 </html>
+```
