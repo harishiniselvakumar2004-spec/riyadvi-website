@@ -1,7 +1,7 @@
 # Riyadvi Technologies Website
 
 ## Project Overview
-A modern, responsive website for Riyadvi Technologies, featuring a premium black-and-gold design, interactive 3D animation, and a functional contact form.
+A modern, responsive full-stack website for Riyadvi Technologies, featuring a premium black-and-gold design, interactive 3D animation, GSAP animations, and PostgreSQL database integration.
 
 ## Technologies Used
 - HTML5
@@ -11,7 +11,7 @@ A modern, responsive website for Riyadvi Technologies, featuring a premium black
 - GSAP
 - Node.js
 - Express.js
-- SQLite
+- PostgreSQL
 
 ## Features
 - Responsive website layout
@@ -19,17 +19,23 @@ A modern, responsive website for Riyadvi Technologies, featuring a premium black
 - GSAP animations
 - Home, About, Services, and Contact pages
 - Contact form with backend integration
-- Contact enquiries stored in SQLite database
+- PostgreSQL database integration
+- Backend API deployed on Render
 
 ## How to Run
 1. Install Node.js.
-2. Open the project folder in VS Code.
-3. Run `npm install`.
-4. Start the server using `node server.js`.
-5. Open `http://localhost:3000` in your browser.
+2. Clone or download this repository.
+3. Open the project folder in VS Code.
+4. Run `npm install`.
+5. Configure the `DATABASE_URL` environment variable with your PostgreSQL connection URL.
+6. Start the server using `node server.js`.
+7. Open the frontend using Live Server or the configured website URL.
 
 ## Database
-Contact form submissions are stored in the SQLite database.
+PostgreSQL is used to store application data. The backend connects to the database using the `DATABASE_URL` environment variable.
+
+## Deployment
+The backend API is deployed on Render.
 
 ## Developer
 Harishini S
