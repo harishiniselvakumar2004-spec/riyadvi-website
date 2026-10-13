@@ -1,9 +1,11 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Riyadvi Technologies - Web development, UI/UX design, digital marketing, AI and technology solutions.">
+  <meta name="description" content="Riyadvi Technologies provides web development, UI/UX design, digital marketing, AI and technology solutions.">
+  <meta name="theme-color" content="#080808">
   <title>RIYADVI | Technology & Digital Solutions</title>
 
   <link rel="stylesheet" href="style.css">
@@ -12,70 +14,150 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
-    html { scroll-behavior: smooth; }
-    body { font-family: 'Inter', sans-serif; }
+    :root {
+      --gold: #D4AF37;
+      --dark: #080808;
+      --card: rgba(255,255,255,.035);
+      --border: rgba(212,175,55,.35);
+      --text: #f5f5f5;
+      --muted: #b8b8b8;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+    body { margin: 0; font-family: 'Inter', sans-serif; }
+    a { color: inherit; }
+    button, input, textarea, select { font: inherit; }
+
     .section { padding: 80px 8%; }
-    .section h2 { margin-bottom: 20px; }
-    .section-intro { max-width: 760px; margin-bottom: 30px; line-height: 1.8; }
+    .section h2 { margin: 0 0 20px; }
+    .section-intro {
+      max-width: 760px;
+      margin: 0 0 30px;
+      line-height: 1.8;
+    }
+
     .content-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
       gap: 22px;
     }
+
     .content-card {
       padding: 24px;
-      border: 1px solid rgba(212,175,55,.35);
+      border: 1px solid var(--border);
       border-radius: 14px;
-      background: rgba(255,255,255,.03);
+      background: var(--card);
+      transition: transform .25s ease, border-color .25s ease;
     }
+
+    .content-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--gold);
+    }
+
     .content-card h3 { margin-top: 0; }
+
     .form-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 18px;
     }
-    .form-field { display: flex; flex-direction: column; gap: 8px; }
+
+    .form-field {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      min-width: 0;
+    }
+
     .form-field.full-width { grid-column: 1 / -1; }
-    .form-field input, .form-field textarea, .form-field select {
+
+    .form-field label { font-weight: 600; }
+
+    .form-field input,
+    .form-field textarea,
+    .form-field select {
       width: 100%;
-      box-sizing: border-box;
       padding: 13px;
       border: 1px solid #777;
       border-radius: 8px;
+      background: #151515;
+      color: #fff;
       font: inherit;
     }
+
+    .form-field input:focus,
+    .form-field textarea:focus,
+    .form-field select:focus {
+      outline: 2px solid var(--gold);
+      outline-offset: 2px;
+    }
+
     .form-field textarea { min-height: 110px; resize: vertical; }
+
     .gold-button {
       display: inline-block;
       padding: 13px 22px;
       border: 0;
       border-radius: 8px;
-      background: #D4AF37;
+      background: var(--gold);
       color: #111;
       font-weight: 700;
       cursor: pointer;
       text-decoration: none;
+      transition: opacity .2s ease, transform .2s ease;
     }
-    .form-message { margin-top: 16px; }
+
+    .gold-button:hover { transform: translateY(-2px); }
+    .gold-button:disabled { opacity: .6; cursor: wait; transform: none; }
+
+    .form-message {
+      margin-top: 16px;
+      line-height: 1.6;
+      overflow-wrap: anywhere;
+    }
+
     .health-form {
       max-width: 900px;
       padding: 28px;
-      border: 1px solid rgba(212,175,55,.4);
+      border: 1px solid var(--border);
       border-radius: 16px;
+      background: rgba(255,255,255,.02);
     }
+
+    .section-kicker {
+      color: var(--gold);
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      font-size: .8rem;
+    }
+
     .site-footer { padding: 30px 8%; text-align: center; }
-    @media (max-width: 600px) {
+
+    @media (max-width: 700px) {
       .section { padding: 55px 6%; }
       .health-form { padding: 18px; }
+      .form-grid { grid-template-columns: 1fr; }
+      .form-field.full-width { grid-column: auto; }
+      .nav-links { gap: 12px; flex-wrap: wrap; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+      }
     }
   </style>
 </head>
 
 <body>
-
   <!-- NAVIGATION -->
   <header class="site-header">
-    <nav class="navbar">
+    <nav class="navbar" aria-label="Main navigation">
       <a class="logo" href="#home">RIYADVI<span>.</span></a>
 
       <div class="nav-links">
@@ -85,17 +167,18 @@
         <a href="#blog">Blog</a>
         <a href="#careers">Careers</a>
         <a href="#about">About</a>
+        <a href="#health-checkup">Health Checkup</a>
+        <a href="#project-planning">Project Planning</a>
         <a href="#contact">Contact</a>
       </div>
     </nav>
   </header>
 
   <main>
-
     <!-- HOME -->
     <section class="hero section" id="home">
       <div class="hero-content">
-        <p>TECHNOLOGY • DESIGN • INNOVATION</p>
+        <p class="section-kicker">Technology • Design • Innovation</p>
         <h1>Designing the Future with Digital Innovation</h1>
         <p class="section-intro">
           We build digital experiences, intelligent solutions and technology
@@ -112,6 +195,7 @@
 
     <!-- SERVICES -->
     <section class="section" id="services">
+      <p class="section-kicker">What We Do</p>
       <h2>Our Services</h2>
       <p class="section-intro">
         Digital solutions designed around your business goals, customers and
@@ -123,27 +207,22 @@
           <h3>Web Development</h3>
           <p>Responsive, accessible and modern websites for businesses.</p>
         </article>
-
         <article class="content-card">
           <h3>App Development</h3>
           <p>User-focused mobile and web application experiences.</p>
         </article>
-
         <article class="content-card">
           <h3>UI/UX Design</h3>
           <p>Wireframes, prototypes and intuitive digital interfaces.</p>
         </article>
-
         <article class="content-card">
           <h3>Digital Marketing</h3>
           <p>SEO and digital strategies to improve online visibility.</p>
         </article>
-
         <article class="content-card">
           <h3>AR/VR Solutions</h3>
           <p>Immersive experiences for interactive digital products.</p>
         </article>
-
         <article class="content-card">
           <h3>3D Experiences</h3>
           <p>Interactive 3D visuals and animations for the web.</p>
@@ -153,10 +232,11 @@
 
     <!-- PORTFOLIO -->
     <section class="section" id="portfolio">
+      <p class="section-kicker">Selected Work</p>
       <h2>Selected Projects</h2>
       <p class="section-intro">
-        Explore sample projects demonstrating design, development and
-        interactive technology concepts.
+        Sample concepts demonstrating design, development and interactive
+        technology ideas.
       </p>
 
       <div class="content-grid">
@@ -165,13 +245,11 @@
           <p>A modern corporate website concept with responsive layouts.</p>
           <span>HTML • CSS • JavaScript</span>
         </article>
-
         <article class="content-card">
           <h3>UI/UX Dashboard</h3>
           <p>A dashboard concept focused on clear data presentation.</p>
           <span>UI/UX • Figma</span>
         </article>
-
         <article class="content-card">
           <h3>Interactive 3D Experience</h3>
           <p>A browser-based 3D visual concept with animation.</p>
@@ -179,27 +257,25 @@
         </article>
       </div>
 
-      <p class="section-intro">
+      <p class="section-intro" style="margin-top:24px">
         These are illustrative project descriptions. Replace them with
-        verified client work or your completed case studies where available.
+        verified client work or completed case studies where available.
       </p>
     </section>
 
     <!-- BLOG -->
     <section class="section" id="blog">
-      <h2>Insights & Ideas</h2>
-
+      <p class="section-kicker">Latest Thinking</p>
+      <h2>Insights &amp; Ideas</h2>
       <div class="content-grid">
         <article class="content-card">
           <h3>Why UI/UX Matters</h3>
           <p>How thoughtful design can make digital products easier to use.</p>
         </article>
-
         <article class="content-card">
           <h3>Building Better Websites</h3>
           <p>Key ideas for creating responsive and user-friendly websites.</p>
         </article>
-
         <article class="content-card">
           <h3>AI in Digital Experiences</h3>
           <p>Ways AI tools can support creativity and digital workflows.</p>
@@ -209,6 +285,7 @@
 
     <!-- CAREERS -->
     <section class="section" id="careers">
+      <p class="section-kicker">Work With Us</p>
       <h2>Careers at Riyadvi</h2>
       <p class="section-intro">
         Interested in technology, design or digital innovation? Send us your
@@ -220,6 +297,7 @@
 
     <!-- ABOUT -->
     <section class="section" id="about">
+      <p class="section-kicker">Who We Are</p>
       <h2>About Riyadvi</h2>
       <p class="section-intro">
         Riyadvi focuses on combining technology, creativity and user-centered
@@ -233,12 +311,10 @@
           <h3>Our Mission</h3>
           <p>To create practical digital solutions that address real needs.</p>
         </article>
-
         <article class="content-card">
           <h3>Our Approach</h3>
           <p>Understand the problem, plan the experience, build and improve.</p>
         </article>
-
         <article class="content-card">
           <h3>Our Focus</h3>
           <p>Usability, quality, accessibility and technology innovation.</p>
@@ -248,92 +324,145 @@
 
     <!-- BUSINESS HEALTH CHECKUP -->
     <section class="section" id="health-checkup">
+      <p class="section-kicker">Free Business Review</p>
       <h2>Business Health Checkup</h2>
       <p class="section-intro">
-        Tell us about your business goals and challenges. Submit the form to
-        send your information to the Riyadvi backend.
+        Tell us about your business goals and challenges. Our team can
+        understand your requirements and explore suitable digital solutions.
       </p>
 
       <form id="healthCheckupForm" class="health-form">
         <div class="form-grid">
-
           <div class="form-field">
             <label for="healthName">Your Name *</label>
-            <input
-              id="healthName"
-              name="name"
-              type="text"
-              autocomplete="name"
-              required
-              placeholder="Enter your name"
-            >
+            <input id="healthName" name="name" type="text"
+              autocomplete="name" required placeholder="Enter your name">
           </div>
 
           <div class="form-field">
             <label for="healthEmail">Your Email *</label>
-            <input
-              id="healthEmail"
-              name="email"
-              type="email"
-              autocomplete="email"
-              required
-              placeholder="Enter your email"
-            >
+            <input id="healthEmail" name="email" type="email"
+              autocomplete="email" required placeholder="Enter your email">
           </div>
 
           <div class="form-field">
             <label for="healthCompany">Company Name *</label>
-            <input
-              id="healthCompany"
-              name="company"
-              type="text"
-              required
-              placeholder="Enter company name"
-            >
+            <input id="healthCompany" name="company" type="text"
+              required placeholder="Enter company name">
           </div>
 
           <div class="form-field">
             <label for="healthWebsite">Website URL</label>
-            <input
-              id="healthWebsite"
-              name="website"
-              type="url"
-              placeholder="https://example.com"
-            >
+            <input id="healthWebsite" name="website" type="url"
+              placeholder="https://example.com">
           </div>
 
           <div class="form-field full-width">
             <label for="healthGoals">Business Goals *</label>
-            <textarea
-              id="healthGoals"
-              name="goals"
-              required
-              placeholder="What would you like your business to achieve?"
-            ></textarea>
+            <textarea id="healthGoals" name="goals" required
+              placeholder="What would you like your business to achieve?"></textarea>
           </div>
 
           <div class="form-field full-width">
             <label for="healthChallenges">Current Challenges *</label>
-            <textarea
-              id="healthChallenges"
-              name="challenges"
-              required
-              placeholder="Describe the challenges you are facing"
-            ></textarea>
+            <textarea id="healthChallenges" name="challenges" required
+              placeholder="Describe the challenges you are facing"></textarea>
           </div>
-
         </div>
 
         <button class="gold-button" id="healthSubmitButton" type="submit">
           Submit Health Checkup
         </button>
+        <p id="healthFormMessage" class="form-message"
+          role="status" aria-live="polite"></p>
+      </form>
+    </section>
 
-        <p id="healthFormMessage" class="form-message" role="status" aria-live="polite"></p>
+    <!-- PROJECT PLANNING GUIDE -->
+    <section class="section" id="project-planning">
+      <p class="section-kicker">Plan Your Project</p>
+      <h2>Project Planning Guide</h2>
+      <p class="section-intro">
+        Share your project requirements, preferred budget, timeline and
+        essential features to help outline your project needs.
+      </p>
+
+      <form id="planningForm" class="health-form">
+        <div class="form-grid">
+          <div class="form-field">
+            <label for="planningName">Your Name *</label>
+            <input id="planningName" name="name" type="text"
+              autocomplete="name" required placeholder="Enter your name">
+          </div>
+
+          <div class="form-field">
+            <label for="planningEmail">Your Email *</label>
+            <input id="planningEmail" name="email" type="email"
+              autocomplete="email" required placeholder="Enter your email">
+          </div>
+
+          <div class="form-field">
+            <label for="planningType">Project Type *</label>
+            <select id="planningType" name="projectType" required>
+              <option value="">Select project type</option>
+              <option value="Website">Website</option>
+              <option value="Mobile App">Mobile App</option>
+              <option value="UI/UX Design">UI/UX Design</option>
+              <option value="E-commerce">E-commerce</option>
+              <option value="Digital Marketing">Digital Marketing</option>
+              <option value="AI Solution">AI Solution</option>
+              <option value="3D / AR / VR">3D / AR / VR</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+
+          <div class="form-field">
+            <label for="planningBudget">Estimated Budget *</label>
+            <select id="planningBudget" name="budget" required>
+              <option value="">Select budget range</option>
+              <option value="Below ₹10,000">Below ₹10,000</option>
+              <option value="₹10,000–₹25,000">₹10,000–₹25,000</option>
+              <option value="₹25,000–₹50,000">₹25,000–₹50,000</option>
+              <option value="₹50,000+">₹50,000+</option>
+              <option value="Not decided">Not decided</option>
+            </select>
+          </div>
+
+          <div class="form-field">
+            <label for="planningTimeline">Preferred Timeline *</label>
+            <select id="planningTimeline" name="timeline" required>
+              <option value="">Select timeline</option>
+              <option value="Within 2 weeks">Within 2 weeks</option>
+              <option value="Within 1 month">Within 1 month</option>
+              <option value="1–3 months">1–3 months</option>
+              <option value="Flexible">Flexible</option>
+            </select>
+          </div>
+
+          <div class="form-field full-width">
+            <label for="planningFeatures">Required Features *</label>
+            <textarea id="planningFeatures" name="features" required
+              placeholder="Example: Login, dashboard, payment, responsive design"></textarea>
+          </div>
+
+          <div class="form-field full-width">
+            <label for="planningDetails">Additional Details</label>
+            <textarea id="planningDetails" name="details"
+              placeholder="Describe your idea or requirements"></textarea>
+          </div>
+        </div>
+
+        <button class="gold-button" id="planningSubmitButton" type="submit">
+          Submit Project Requirements
+        </button>
+        <p id="planningMessage" class="form-message"
+          role="status" aria-live="polite"></p>
       </form>
     </section>
 
     <!-- CONTACT -->
     <section class="section" id="contact">
+      <p class="section-kicker">Get In Touch</p>
       <h2>Let's Talk About Your Project</h2>
       <p class="section-intro">
         Share your project requirements and our team can review your enquiry.
@@ -343,30 +472,34 @@
         <div class="form-grid">
           <div class="form-field">
             <label for="contactName">Name *</label>
-            <input id="contactName" name="name" type="text" required placeholder="Your name">
+            <input id="contactName" name="name" type="text"
+              autocomplete="name" required placeholder="Your name">
           </div>
 
           <div class="form-field">
             <label for="contactEmail">Email *</label>
-            <input id="contactEmail" name="email" type="email" required placeholder="Your email">
+            <input id="contactEmail" name="email" type="email"
+              autocomplete="email" required placeholder="Your email">
           </div>
 
           <div class="form-field full-width">
             <label for="contactSubject">Subject</label>
-            <input id="contactSubject" name="subject" type="text" placeholder="Project enquiry">
+            <input id="contactSubject" name="subject" type="text"
+              placeholder="Project enquiry">
           </div>
 
           <div class="form-field full-width">
             <label for="contactMessage">Message *</label>
-            <textarea id="contactMessage" name="message" required placeholder="Tell us about your project"></textarea>
+            <textarea id="contactMessage" name="message" required
+              placeholder="Tell us about your project"></textarea>
           </div>
         </div>
 
         <button class="gold-button" type="submit">Send Enquiry</button>
-        <p id="formMessage" class="form-message" role="status" aria-live="polite"></p>
+        <p id="formMessage" class="form-message"
+          role="status" aria-live="polite"></p>
       </form>
     </section>
-
   </main>
 
   <!-- FOOTER -->
@@ -375,28 +508,29 @@
     <a href="#home">Back to top ↑</a>
   </footer>
 
-  <!-- Libraries -->
+  <!-- Animation libraries -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-
-  <!-- Existing website JavaScript -->
   <script src="script.js"></script>
 
-  <!-- Business Health Checkup submission -->
   <script>
+    const API_BASE = "https://riyadvi-website-api.onrender.com";
+
+    document.getElementById("currentYear").textContent =
+      new Date().getFullYear();
+
+    // Business Health Checkup submission
     const healthForm = document.getElementById("healthCheckupForm");
     const healthMessage = document.getElementById("healthFormMessage");
     const healthSubmitButton = document.getElementById("healthSubmitButton");
 
     healthForm.addEventListener("submit", async function (event) {
       event.preventDefault();
-
       healthMessage.textContent = "Submitting your information...";
       healthSubmitButton.disabled = true;
 
       const formData = new FormData(healthForm);
-
       const payload = {
         name: String(formData.get("name") || "").trim(),
         email: String(formData.get("email") || "").trim(),
@@ -409,28 +543,20 @@
       };
 
       try {
-        const response = await fetch(
-          "https://riyadvi-website-api.onrender.com/api/health-checkup",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json"
-            },
-            body: JSON.stringify(payload)
-          }
-        );
+        const response = await fetch(API_BASE + "/api/health-checkup", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload)
+        });
 
         const result = await response.json();
-
         if (!response.ok || result.success === false) {
-          throw new Error(result.message || "The server could not accept the form.");
+          throw new Error(result.message || "Unable to submit the form.");
         }
 
         healthMessage.textContent =
-          result.message || "Your Business Health Checkup was submitted successfully!";
-
+          result.message || "Health Checkup submitted successfully!";
         healthForm.reset();
-
       } catch (error) {
         console.error("Health Checkup submission error:", error);
         healthMessage.textContent =
@@ -440,9 +566,55 @@
       }
     });
 
-    document.getElementById("currentYear").textContent =
-      new Date().getFullYear();
-  </script>
+    // Project Planning submission
+    // This expects the backend POST /api/project-planning endpoint.
+    const planningForm = document.getElementById("planningForm");
+    const planningMessage = document.getElementById("planningMessage");
+    const planningSubmitButton =
+      document.getElementById("planningSubmitButton");
 
+    planningForm.addEventListener("submit", async function (event) {
+      event.preventDefault();
+      planningMessage.textContent = "Submitting your project requirements...";
+      planningSubmitButton.disabled = true;
+
+      const formData = new FormData(planningForm);
+      const payload = {
+        name: String(formData.get("name") || "").trim(),
+        email: String(formData.get("email") || "").trim(),
+        projectType: String(formData.get("projectType") || "").trim(),
+        budget: String(formData.get("budget") || "").trim(),
+        timeline: String(formData.get("timeline") || "").trim(),
+        features: String(formData.get("features") || "").trim(),
+        details: String(formData.get("details") || "").trim()
+      };
+
+      try {
+        const response = await fetch(API_BASE + "/api/project-planning", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload)
+        });
+
+        const result = await response.json();
+
+        if (!response.ok || result.success === false) {
+          throw new Error(
+            result.message || "Project Planning API is not ready yet."
+          );
+        }
+
+        planningMessage.textContent =
+          result.message || "Project requirements submitted successfully!";
+        planningForm.reset();
+      } catch (error) {
+        console.error("Project Planning submission error:", error);
+        planningMessage.textContent =
+          "The form is ready, but the backend connection needs to be completed. Please try again later.";
+      } finally {
+        planningSubmitButton.disabled = false;
+      }
+    });
+  </script>
 </body>
 </html>
