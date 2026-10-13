@@ -1,3 +1,7 @@
+/* ========================================
+   RIYADVI TECHNOLOGIES — COMPLETE CSS
+   Premium Black & Gold Design
+   ======================================== */
 
 * {
   box-sizing: border-box;
@@ -26,6 +30,12 @@ body {
   overflow-x: hidden;
 }
 
+a {
+  color: inherit;
+}
+
+/* NAVIGATION */
+
 .navbar {
   min-height: 78px;
   padding: 18px 7%;
@@ -36,7 +46,7 @@ body {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(8, 8, 8, 0.92);
+  background: rgba(8, 8, 8, 0.94);
   border-bottom: 1px solid rgba(217, 182, 111, 0.2);
   backdrop-filter: blur(16px);
 }
@@ -47,6 +57,7 @@ body {
   font-weight: 800;
   letter-spacing: 3px;
   text-decoration: none;
+  white-space: nowrap;
 }
 
 .logo span,
@@ -54,12 +65,14 @@ body {
   color: var(--gold);
 }
 
-.navbar nav {
+.nav-links {
   display: flex;
   flex-wrap: wrap;
-  gap: 26px;
+  align-items: center;
+  gap: 22px;
 }
 
+.nav-links a,
 .navbar nav a {
   color: #d0ccc4;
   font-size: 14px;
@@ -67,27 +80,37 @@ body {
   transition: color 0.3s ease;
 }
 
+.nav-links a:hover,
 .navbar nav a:hover {
   color: var(--gold-light);
 }
 
+/* HERO SECTION */
+
 .hero {
-  min-height: 650px;
-  padding: 100px 9%;
+  min-height: 680px;
+  padding: 80px 7%;
   display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   align-items: center;
-  gap: 55px;
+  gap: 30px;
   background:
-    radial-gradient(ellipse at 75% 45%, rgba(160, 115, 37, 0.12), transparent 40%),
+    radial-gradient(
+      ellipse at 78% 45%,
+      rgba(160, 115, 37, 0.16),
+      transparent 45%
+    ),
     var(--black);
 }
 
 .hero-content {
   max-width: 680px;
+  position: relative;
+  z-index: 3;
   animation: reveal 0.9s ease both;
 }
 
+.section-kicker,
 .eyebrow {
   color: var(--gold);
   font-size: 12px;
@@ -97,17 +120,19 @@ body {
 }
 
 .hero h1 {
-  font-size: clamp(42px, 5.5vw, 72px);
+  font-size: clamp(40px, 5vw, 70px);
   line-height: 1.12;
   letter-spacing: -2px;
   margin-bottom: 24px;
 }
 
-.hero-content > p:not(.eyebrow) {
+.hero-content > p {
   color: var(--muted);
   max-width: 520px;
-  margin-bottom: 32px;
+  margin-bottom: 30px;
 }
+
+/* BUTTONS */
 
 .button {
   display: inline-block;
@@ -120,7 +145,9 @@ body {
   font-weight: 700;
   text-decoration: none;
   cursor: pointer;
-  transition: transform 0.3s ease, background 0.3s ease,
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease,
     box-shadow 0.3s ease;
 }
 
@@ -130,6 +157,36 @@ body {
   box-shadow: 0 8px 28px rgba(217, 182, 111, 0.2);
 }
 
+.button:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+/* LARGE THREE.JS SPHERE AND ORBIT */
+
+.hero-visual {
+  position: relative;
+  width: 100%;
+  max-width: 560px;
+  height: 540px;
+  min-width: 0;
+  justify-self: center;
+  overflow: visible;
+  isolation: isolate;
+}
+
+#heroCanvas {
+  display: block;
+  position: absolute;
+  inset: 0;
+  width: 100% !important;
+  height: 100% !important;
+  z-index: 2;
+  outline: none;
+}
+
+/* OPTIONAL CSS ORB FALLBACK */
+
 .orb {
   width: min(330px, 75vw);
   aspect-ratio: 1;
@@ -138,7 +195,14 @@ body {
   display: grid;
   place-items: center;
   position: relative;
-  background: radial-gradient(circle at 35% 30%, #f1dca6, #8d692e 35%, #21180a 68%, #080808 75%);
+  background:
+    radial-gradient(
+      circle at 35% 30%,
+      #f1dca6,
+      #8d692e 35%,
+      #21180a 68%,
+      #080808 75%
+    );
   box-shadow: 0 0 70px rgba(217, 182, 111, 0.17);
   animation: float 5s ease-in-out infinite;
 }
@@ -162,9 +226,17 @@ body {
   width: 48%;
   aspect-ratio: 1;
   border-radius: 50%;
-  background: radial-gradient(circle at 35% 30%, #fff1c8, #d9b66f 40%, #674719 75%);
+  background:
+    radial-gradient(
+      circle at 35% 30%,
+      #fff1c8,
+      #d9b66f 40%,
+      #674719 75%
+    );
   box-shadow: 0 0 45px rgba(243, 219, 160, 0.4);
 }
+
+/* GENERAL SECTIONS */
 
 .section {
   padding: 100px 8%;
@@ -178,6 +250,8 @@ body {
   margin-bottom: 40px;
 }
 
+/* SERVICES */
+
 .services {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -190,7 +264,9 @@ body {
   background: linear-gradient(145deg, #151515, #0c0c0c);
   border: 1px solid #29251d;
   border-radius: 8px;
-  transition: transform 0.3s ease, border-color 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease;
 }
 
 .service:hover {
@@ -210,14 +286,20 @@ body {
 }
 
 .service p,
-.about > p:not(.eyebrow) {
+.about > p {
   color: var(--muted);
 }
+
+/* ABOUT */
 
 .about {
   padding: 100px 9%;
   background:
-    radial-gradient(ellipse at 85% 50%, rgba(217, 182, 111, 0.1), transparent 45%),
+    radial-gradient(
+      ellipse at 85% 50%,
+      rgba(217, 182, 111, 0.1),
+      transparent 45%
+    ),
     #101010;
   border-top: 1px solid #242019;
   border-bottom: 1px solid #242019;
@@ -227,6 +309,8 @@ body {
   margin-bottom: 20px;
 }
 
+/* CONTACT FORM */
+
 .contact form {
   max-width: 600px;
   display: grid;
@@ -234,7 +318,8 @@ body {
 }
 
 .contact input,
-.contact textarea {
+.contact textarea,
+.contact select {
   width: 100%;
   padding: 16px;
   color: #fff;
@@ -246,7 +331,8 @@ body {
 }
 
 .contact input:focus,
-.contact textarea:focus {
+.contact textarea:focus,
+.contact select:focus {
   border-color: var(--gold);
   box-shadow: 0 0 0 3px rgba(217, 182, 111, 0.1);
 }
@@ -260,15 +346,12 @@ body {
   justify-self: start;
 }
 
-.contact form .button:disabled {
-  opacity: 0.6;
-  cursor: wait;
-}
-
 #formMessage {
   margin-top: 18px;
   color: var(--gold-light);
 }
+
+/* FOOTER */
 
 footer {
   padding: 25px 7%;
@@ -278,15 +361,32 @@ footer {
   border-top: 1px solid #242019;
 }
 
+/* ANIMATIONS */
+
 @keyframes float {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-14px) rotate(4deg); }
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-14px) rotate(4deg);
+  }
 }
 
 @keyframes reveal {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
+
+/* TABLET */
 
 @media (max-width: 800px) {
   .navbar {
@@ -294,21 +394,31 @@ footer {
     flex-direction: column;
   }
 
+  .nav-links,
   .navbar nav {
     justify-content: center;
-    gap: 16px;
+    gap: 14px;
   }
 
   .hero {
-    padding: 75px 7%;
+    padding: 70px 7%;
     grid-template-columns: 1fr;
     text-align: center;
-    gap: 55px;
+    gap: 30px;
   }
 
-  .hero-content > p:not(.eyebrow) {
+  .hero-content {
+    margin: 0 auto;
+  }
+
+  .hero-content > p {
     margin-left: auto;
     margin-right: auto;
+  }
+
+  .hero-visual {
+    width: min(100%, 500px);
+    height: 460px;
   }
 
   .services {
@@ -321,17 +431,34 @@ footer {
   }
 }
 
+/* MOBILE */
+
 @media (max-width: 520px) {
-  .navbar nav {
+  .navbar {
     gap: 12px;
   }
 
+  .nav-links,
+  .navbar nav {
+    gap: 10px;
+  }
+
+  .nav-links a,
   .navbar nav a {
     font-size: 12px;
   }
 
+  .hero {
+    padding: 55px 6%;
+  }
+
   .hero h1 {
+    font-size: clamp(36px, 10vw, 48px);
     letter-spacing: -1px;
+  }
+
+  .hero-visual {
+    height: 360px;
   }
 
   .services {
@@ -344,6 +471,8 @@ footer {
   }
 }
 
+/* ACCESSIBILITY */
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -353,15 +482,43 @@ footer {
     transition-duration: 0.01ms !important;
   }
 }
-.orb-inner {
-  display: none;
+
+/* Hero action buttons */
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px;
+  margin-top: 28px;
 }
 
-#threeCanvas {
-  display: block;
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 2;
+.hero-actions .gold-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 14px 22px;
+  text-align: center;
+}
+
+.hero-actions .secondary-button {
+  background: transparent;
+  color: #d4af37;
+  border: 1px solid #d4af37;
+}
+
+.hero-actions .secondary-button:hover {
+  background: #d4af37;
+  color: #080808;
+}
+
+@media (max-width: 480px) {
+  .hero-actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .hero-actions .gold-button {
+    width: 100%;
+  }
 }

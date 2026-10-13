@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -278,7 +277,7 @@
         <a href="#ai-tools">AI Tools</a>
         <a href="#health-checkup">Health Checkup</a>
         <a href="#project-planning">Project Planning</a>
-        <a href="#contact">Contact</a>
+        <a href="#book-consultant">Contact</a>
       </div>
     </nav>
   </header>
@@ -293,8 +292,18 @@
           We build digital experiences, intelligent solutions and technology
           products that help businesses grow.
         </p>
-        <a href="#services" class="gold-button">Explore Our Services</a>
-        <a href="#contact" class="gold-button">Start a Project</a>
+      
+        <div class="hero-actions">
+          <a href="#contact" class="gold-button">
+            Book a Consultant →
+          </a>
+
+          
+          <a href="#services" class="gold-button secondary-button">
+            Explore Our Services
+          </a>
+        </div>
+
       </div>
 
       <div class="hero-visual" aria-label="Animated 3D visual">
@@ -555,7 +564,65 @@
           role="status" aria-live="polite"></p>
       </form>
     </section>
+    
+    <!-- BOOK A CONSULTANT -->
+    <section class="section" id="book-consultant">
+      <p class="section-kicker">Let's Connect</p>
+      <h2>Book a Consultant</h2>
+      <p class="section-intro">
+        Tell us about your business needs. Submit your details
+        and our team can review your consultation request.
+      </p>
 
+      <form id="consultationForm" class="health-form">
+        <div class="form-grid">
+          <div class="form-field">
+            <label for="consultName">Your Name *</label>
+            <input id="consultName" name="name" type="text" required
+              placeholder="Enter your name">
+          </div>
+
+          <div class="form-field">
+            <label for="consultEmail">Email Address *</label>
+            <input id="consultEmail" name="email" type="email" required
+              placeholder="Enter your email">
+          </div>
+
+          <div class="form-field">
+            <label for="consultPhone">Phone Number *</label>
+            <input id="consultPhone" name="phone" type="tel" required
+              placeholder="Enter your phone number">
+          </div>
+
+          <div class="form-field">
+            <label for="consultService">Service Required *</label>
+            <select id="consultService" name="service" required>
+              <option value="">Select a service</option>
+              <option value="Web Development">Web Development</option>
+              <option value="App Development">App Development</option>
+              <option value="UI/UX Design">UI/UX Design</option>
+              <option value="Digital Marketing">Digital Marketing</option>
+              <option value="AI Solutions">AI Solutions</option>
+              <option value="3D / AR / VR">3D / AR / VR</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+
+          <div class="form-field full-width">
+            <label for="consultMessage">Your Requirements</label>
+            <textarea id="consultMessage" name="message"
+              placeholder="Tell us about your requirements"></textarea>
+          </div>
+        </div>
+
+        <button class="gold-button" id="consultSubmitButton" type="submit">
+          Submit Consultation Request
+        </button>
+
+        <p id="consultFormMessage" class="form-message"
+          role="status" aria-live="polite"></p>
+      </form>
+    </section>
     <!-- PROJECT PLANNING GUIDE -->
     <section class="section" id="project-planning">
       <p class="section-kicker">Plan Your Project</p>
@@ -806,7 +873,56 @@
         planningSubmitButton.disabled = false;
       }
     });
+    
+    // Book a Consultant form submission
+    const consultationForm = document.getElementById("consultationForm");
+    const consultationMessage = document.getElementById("consultFormMessage");
+    const consultationSubmitButton = document.getElementById("consultSubmitButton");
+
+    if (consultationForm) {
+      consultationForm.addEventListener("submit", async function (event) {
+        event.preventDefault();
+
+        consultationMessage.textContent = "Submitting your consultation request...";
+        consultationSubmitButton.disabled = true;
+
+        const formData = new FormData(consultationForm);
+
+        const payload = {
+          name: String(formData.get("name") || "").trim(),
+          email: String(formData.get("email") || "").trim(),
+          phone: String(formData.get("phone") || "").trim(),
+          service: String(formData.get("service") || "").trim(),
+          message: String(formData.get("message") || "").trim()
+        };
+
+        try {
+          const response = await fetch(API_BASE + "/api/consultation", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload)
+          });
+
+          const result = await response.json();
+
+          if (!response.ok || result.success === false) {
+            throw new Error(result.message || "Unable to submit request.");
+          }
+
+          consultationMessage.textContent =
+            result.message || "Consultation request submitted successfully!";
+
+          consultationForm.reset();
+        } catch (error) {
+          console.error("Consultation form error:", error);
+          consultationMessage.textContent =
+            "Unable to submit. Please try again.";
+        } finally {
+          consultationSubmitButton.disabled = false;
+        }
+      });
+    }
+
   </script>
 </body>
 </html>
-```
