@@ -103,7 +103,7 @@ if (window.gsap) {
 }
 
 // Three.js 3D animation
-const threeCanvas = document.getElementById("threeCanvas");
+const threeCanvas = document.getElementById("heroCanvas");
 
 if (threeCanvas && window.THREE) {
   const scene = new THREE.Scene();
